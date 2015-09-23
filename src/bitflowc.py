@@ -175,50 +175,49 @@ def parse(content):
             is_loop2 = True
 
         if isOperator(tk):
-            if tk is inc:
-                if exp_tmp:
+            if exp_tmp:
+                if tk is inc:
                     TMP += 1
-                elif exp_tmp2:
-                    TMP2 += 1
-                elif has_idx:
-                    VALUES[IDX] += 1
-                else:
-                    abort("No viable context for '+' operator !")
-            elif tk is dec:
-                if exp_tmp:
+                elif tk is dec:
                     TMP -= 1
-                elif exp_tmp2:
-                    TMP2 -= 1
-                elif has_idx:
-                    VALUES[IDX] -= 1
-                else:
-                    abort("No viable context for '-' operator !")
-            elif tk is pwr:
-                if exp_tmp:
+                elif tk is pwr:
                     TMP *= TMP
-                elif exp_tmp2:
-                    TMP2 *= TMP2
-                elif has_idx:
-                    VALUES[IDX] *= VALUES[IDX]
-                else:
-                    abort("No viable context for '^' operator !")
-            elif tk is div:
-                if exp_tmp:
+                elif tk is div:
                     TMP = ceil(TMP / 2)
-                elif exp_tmp2:
-                    TMP2 = ceil(TMP2 / 2)
-                elif has_idx:
-                    VALUES[IDX] = ceil(VALUES[IDX] / 2)
-                else:
-                    abort("No viable context for '/' operator !")
-            elif tk is mul:
-                if exp_tmp:
+                elif tk is mul:
                     TMP *= 2
-                elif exp_tmp2:
+            elif exp_tmp2:
+                if tk is inc:
+                    TMP2 += 1
+                elif tk is dec:
+                    TMP2 -= 1
+                elif tk is pwr:
+                    TMP2 *= TMP
+                elif tk is div:
+                    TMP2 = ceil(TMP2 / 2)
+                elif tk is mul:
                     TMP2 *= 2
-                elif has_idx:
+            elif has_idx:
+                if tk is inc:
+                    VALUES[IDX] += 1
+                elif tk is dec:
+                    VALUES[IDX] -= 1
+                elif tk is pwr:
+                    VALUES[IDX] *= VALUES[IDX]
+                elif tk is div:
+                    VALUES[IDX] = ceil(VALUES[IDX] / 2)
+                elif tk is mul:
                     VALUES[IDX] *= 2
-                else:
+            else:
+                if tk is inc:
+                    abort("No viable context for '+' operator !")
+                elif tk is dec:
+                    abort("No viable context for '-' operator !")
+                elif tk is pwr:
+                    abort("No viable context for '^' operator !")
+                elif tk is div:
+                    abort("No viable context for '/' operator !")
+                elif tk is mul:
                     abort("No viable context for '*' operator !")
 
         if isSetter(tk):
