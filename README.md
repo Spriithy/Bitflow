@@ -147,7 +147,11 @@ Have you ever wondered what did `a` and `b` stand for ? Well, they represent the
 
 You are now ready for Bitflow !
 
-License
+
+
+
+
+# License
 
 ```txt
 The MIT License (MIT)
