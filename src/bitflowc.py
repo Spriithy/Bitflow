@@ -73,7 +73,7 @@ def parse(content):
     i = 0
 
     IDX = -1
-    VALUES = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+    VALUES = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
 
     TMP = 0
     GOTOc = 0
@@ -158,7 +158,7 @@ def parse(content):
         elif tk is at:
             exp_idx = True
         elif exp_idx and tk is rst:
-            VALUES = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+            VALUES = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
             exp_cln = True
         elif exp_idx and not isDigit(tk):
             abort("Cannot resolve '" + tk + "' as a correct index !")
