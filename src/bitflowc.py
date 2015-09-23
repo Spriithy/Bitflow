@@ -11,10 +11,11 @@ cps = "&" # sets the current index at 64 (capital letters ascii position minues 
 ncs = "$" # sets the current index at 96 (non capital letters ascii position minues one)
 div = "/" # divides the current index by two
 mul = "*" # mutliplies the current index by two
+pwr = "^" # returns the current value power 2
 inc = "+" # increases the current index by one
 dec = "-" # decreases the current index by one
 nout = "." # prints the current index value as is (integer)
-lout = ">" # prints the current index value as an ascii-character
+lout = "," # prints the current index value as an ascii-character
 sout = "_" # prints a space
 frs = "{" # New loop opening
 frd = "}" # Loop closing
@@ -40,7 +41,7 @@ def isSetter(tk):
     return tk is rst or tk is cps or tk is ncs or tk is var_a or tk is var_b
 
 def isOperator(tk):
-    return tk is div or tk is mul or tk is inc or tk is dec
+    return tk is div or tk is mul or tk is inc or tk is dec or tk is pwr
 
 def isOutOption(tk):
     return tk is lout or tk is nout or tk is sout or tk is nlout
@@ -192,6 +193,15 @@ def parse(content):
                     VALUES[IDX] -= 1
                 else:
                     abort("No viable context for '-' operator !")
+            elif tk is pwr:
+                if exp_tmp:
+                    TMP *= TMP
+                elif exp_tmp2:
+                    TMP2 *= TMP2
+                elif has_idx:
+                    VALUES[IDX] *= VALUES[IDX]
+                else:
+                    abort("No viable context for '^' operator !")
             elif tk is div:
                 if exp_tmp:
                     TMP = ceil(TMP / 2)
