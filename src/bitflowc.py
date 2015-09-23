@@ -3,7 +3,6 @@ from sys import *
 from math import ceil
 
 at = "@" # indicates the begining of the index positioning statement
-sp = "#" # exits current index context
 nlout = ";" # new line
 cln = ":" # indicates the end of the index positioning statement
 rst = "!" # sets the current index at 0
@@ -19,8 +18,8 @@ lout = "," # prints the current index value as an ascii-character
 sout = "_" # prints a space
 frs = "{" # New loop opening
 frd = "}" # Loop closing
-wls = "[" # while
-wld = "]" # endwhile
+wls = "[" # nested loop opening
+wld = "]" # nested loop closing
 
 var_a = "a"
 var_b = "b"
@@ -158,6 +157,9 @@ def parse(content):
                 abort("Cannot find a colon (':') to start process !")
         elif tk is at:
             exp_idx = True
+        elif exp_idx and tk is rst:
+            VALUES = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+            exp_cln = True
         elif exp_idx and not isDigit(tk):
             abort("Cannot resolve '" + tk + "' as a correct index !")
         elif exp_tmp and tk is cln:
@@ -171,8 +173,6 @@ def parse(content):
             exp_tmp2 = False
             is_loop = False
             is_loop2 = True
-        elif tk is sp:
-            has_idx = False
 
         if isOperator(tk):
             if tk is inc:
