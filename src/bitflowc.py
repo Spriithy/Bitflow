@@ -327,7 +327,7 @@ def run ():
                 ARGS[1] = int(argv[3])
         except ValueError:
             abort("Invalid parameters passed to main ! The two parameters must be integers !")
-        #parse(content)
+        parse(content)
     else:
         abort("Usage : ./bitflowc <file_name.bitflow>")
 
