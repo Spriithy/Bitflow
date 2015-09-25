@@ -41,6 +41,8 @@ Where `<index>` is in range 0, 9 inclusive. When you have this, you can now jump
 
 The Bitflow programming language is a charcter-based language. This means, this language doesn't work with natural words. This said, I know let you discover the list of the 11 useful characters :
 
+* `#` as in python let's you begin a comment
+
 * `+`  lets you increment the current index by one
 * `-`  lets you decrement the current index by one
 * `*`  lets you  multiply the current index by two
@@ -138,6 +140,25 @@ Now you know how to implement a loop, let's see how to implement nested loops ! 
 ```
 
 This simple code computes `& * &` that is to say `64 * 64 = 4096`. Of course, you can use several different nested loops side by side ! For example, `{$: [&: +] [$: -] }` is correct and working code that outputs `-3072`.
+
+Let's rewrite the `HelloWorld` program using loops !
+
+```txt
+(a,b):{
+  @0:
+    &/++++*,
+    /{++:+++++++}*+,
+    +++++++,,
+    +++,
+    _
+    &/{+++:++++}*-,
+    ${+++:+++++},
+    +++,
+    {++:---},
+    $++++,
+    _&/+,
+}
+```
 
 ### Reffering to other indexes values
 
