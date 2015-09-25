@@ -86,14 +86,14 @@ A basic `Hello World !` program should be (most intuitive version)
 
 ```txt
 (a,b):{
-  @0:                     // We're working with index 0
-    &                     // Let's set the value to be 64 (ascii caps letters)
-      ++++++++,           // And go to ‘H’
-    $                     // Let's go to non caps letters !
-      +++++,,             // Go to ‘e’ and print it out !
+  @0:                     # We're working with index 0
+    &                     # Let's set the value to be 64 (ascii caps letters)
+      ++++++++,           # And go to ‘H’
+    $                     # Let's go to non caps letters !
+      +++++,,             # Go to ‘e’ and print it out !
       +++++++,,
       +++,
-    _       // This prints a whitespace
+    _       # This prints a whitespace
     $
       ---------,
     $
@@ -102,7 +102,7 @@ A basic `Hello World !` program should be (most intuitive version)
       ------,
     $
       ++++,
-    &/+,   // And this prints an exclamating point
+    &/+,   # And this prints an exclamating point
 };
 ```
 
@@ -124,8 +124,8 @@ Where :
 Let's see an example :
 
 ```txt
-@0:            // Let's work in index 0
-  ! {&:+.;}    // Yay ...
+@0:            # Let's work in index 0
+  ! {&:+.;}    # Yay ...
 ```
 
 Let's see... This code will loop 64 times and will display each value on a single line !
@@ -135,8 +135,8 @@ Let's see... This code will loop 64 times and will display each value on a singl
 Now you know how to implement a loop, let's see how to implement nested loops ! Bitflow doesn't natively support nested loops and this is why you can use the **deep-loop**. A deep-loop is a loop **inside** another loop. It is delimited by `[]` rather than `{}`. You can only use this loop inside another loop. Let's see how it works using the example of the multiplication.
 
 ```txt
-@0:              // again, index 0...
-  {&: [&:+] }.;  // hehe !
+@0:              # again, index 0...
+  {&: [&:+] }.;  # hehe !
 ```
 
 This simple code computes `& * &` that is to say `64 * 64 = 4096`. Of course, you can use several different nested loops side by side ! For example, `{$: [&: +] [$: -] }` is correct and working code that outputs `-3072`.
