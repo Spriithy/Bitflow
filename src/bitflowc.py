@@ -2,9 +2,15 @@
 from sys import *
 from math import ceil
 
+cmt = "#"
 at = "@" # indicates the begining of the index positioning statement
 nlout = ";" # new line
 cln = ":" # indicates the end of the index positioning statement
+qmk = "?"
+gt = ">"
+lt = "<"
+eq = "="
+mod =  "%"
 rst = "!" # sets the current index at 0
 cps = "&" # sets the current index at 64 (capital letters ascii position minues one)
 ncs = "$" # sets the current index at 96 (non capital letters ascii position minues one)
@@ -20,6 +26,10 @@ frs = "{" # New loop opening
 frd = "}" # Loop closing
 wls = "[" # nested loop opening
 wld = "]" # nested loop closing
+pars = "("
+pard = ")"
+pipe ="|"
+
 
 var_a = "a"
 var_b = "b"
@@ -54,12 +64,23 @@ def isLoop2Del(tk):
 def opt(data):
     content = list(data)
     tokens = []
+    is_comment = False
     tk = ""
     for char in content:
-        if char is not "\n" and char is not " " and char is not "\t":
-            tk += char
+        if not is_comment:
+            print(char)
+            if char is cmt:
+                is_comment = True
+                print("Comment mode")
+            elif char is not "\n" and char is not " " and char is not "\t":
+                tk += char
+        elif is_comment:
+            print("c: " + char)
+            if char is "\n":
+                is_comment = False
+
     if tk.startswith('(a,b):{') and tk.endswith('};'):
-        content = content[7:-3]
+        content = tk[7:-3]
         for char in content:
             if char is not "\n" and char is not " " and char is not "\t":
                 tokens.append(char)
@@ -306,7 +327,7 @@ def run ():
                 ARGS[1] = int(argv[3])
         except ValueError:
             abort("Invalid parameters passed to main ! The two parameters must be integers !")
-        parse(content)
+        #parse(content)
     else:
         abort("Usage : ./bitflowc <file_name.bitflow>")
 

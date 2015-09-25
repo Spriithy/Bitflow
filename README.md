@@ -58,6 +58,15 @@ The Bitflow programming language is a charcter-based language. This means, this 
 
 Now let's have a look a working example !
 
+### Adding comments
+
+If you ever want to write comments in your program, just add some at the **end of a line** (or single one).
+
+```txt
+@0:
+  +++.   # This is a comment and this instructions should print ‘3’
+```
+
 #### Example
 
 This example will simply compute and display some numbers on the screen
@@ -65,9 +74,9 @@ This example will simply compute and display some numbers on the screen
 ```txt
 (a,b):{
   @0:
-    +*^.;             // Should print ‘4’ on a single line
+    +*^.;             # Should print ‘4’ on a single line
   @1:
-    -*/.;             // This logicaly prints ‘-1’
+    -*/.;             # This logicaly prints ‘-1’
 };
 ```
 
