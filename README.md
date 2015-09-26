@@ -4,6 +4,11 @@ The bitflow programming language
 
 ## Coding in Bitflow
 
+### C - Building from sources
+
+No particular thing. Try to use `cc` or `c99` in order to compile. Should work with others as well.
+
+
 ### Getting started
 
 First, when coding in Bitflow you should always keep in mind you are not using any serious programming language. This is a language mostly designed within 4 hours as a challenge.
@@ -16,6 +21,8 @@ You will need a Python3 installation in order to interprete your Bitflow code. A
 
 Every Bitflow program must be contained in a `.bitflow` file. If not, the interpreter will abort the process.
 Once you have your file setup, type the base program.
+
+**IMPORTANT :** Don't note this part if you wish to use the `C` interpreter !  
 
 ```txt
 (a,b):{
@@ -85,7 +92,7 @@ This example will simply compute and display some numbers on the screen
 A basic `Hello World !` program should be (most intuitive version)
 
 ```txt
-(a,b):{
+(a,b):{    # Not for C interpreter ...
   @0:                     # We're working with index 0
     &                     # Let's set the value to be 64 (ascii caps letters)
       ++++++++,           # And go to ‘H’
@@ -103,7 +110,7 @@ A basic `Hello World !` program should be (most intuitive version)
     $
       ++++,
     &/+,   # And this prints an exclamating point
-};
+};         # This isn't for C as well !
 ```
 
 ### Let's go deeper !
@@ -144,7 +151,6 @@ This simple code computes `& * &` that is to say `64 * 64 = 4096`. Of course, yo
 Let's rewrite the `HelloWorld` program using loops !
 
 ```txt
-(a,b):{
   @0:
     &/++++*,
     /{++:+++++++}*+,
@@ -157,10 +163,9 @@ Let's rewrite the `HelloWorld` program using loops !
     {++:---},
     $++++,
     _&/+,
-}
 ```
 
-### Reffering to other indexes values
+### Referring to other indexes values
 
 Of course you can refer to existing index values ! You can do it extremely easily by typing the index of the array index you want to set !
 
@@ -176,9 +181,6 @@ This code will output the value of index `0`.
 Have you ever wondered what did `a` and `b` stand for ? Well, they represent the different values you can pass to the program when compiling it. If not specified, those values are considered null (0). You can use them by typing either `a` or `b` in your code. Those values can be used as loop iteration limit.
 
 You are now ready for Bitflow !
-
-
-
 
 
 # License
