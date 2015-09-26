@@ -68,14 +68,11 @@ def opt(data):
     tk = ""
     for char in content:
         if not is_comment:
-            print(char)
             if char is cmt:
                 is_comment = True
-                print("Comment mode")
             elif char is not "\n" and char is not " " and char is not "\t":
                 tk += char
         elif is_comment:
-            print("c: " + char)
             if char is "\n":
                 is_comment = False
 
